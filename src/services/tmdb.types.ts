@@ -31,6 +31,10 @@ export interface MovieDetails extends Omit<Movie, 'genre_ids'> {
 	imdb_id: string | null;
 }
 
+export interface GenreResponse {
+	genres: Genre[];
+}
+
 export interface Genre {
 	id: number;
 	name: string;
