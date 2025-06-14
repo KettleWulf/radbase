@@ -3,7 +3,8 @@ import { Link } from "react-router";
 import { useGenres } from "../hooks/useGenres";
 
 const Navigation = () => {
-	const genres = useGenres()
+	const genres = useGenres();
+	console.log("Navigation genres:", genres);
 
 	return (
 		<Navbar bg="dark" variant="dark" expand="lg">
@@ -18,7 +19,7 @@ const Navigation = () => {
 				<Nav.Link as={Link} to="/now-playing">Now Playing</Nav.Link>
 				<NavDropdown title="Genres" id="genres-dropdown">
 					{genres.map(genre => (
-						<NavDropdown.Item as={Link} to={"/genre/" + genre.id}>{genre.name}</NavDropdown.Item>
+						<NavDropdown.Item as={Link} key={genre.id} to={"/genre/" + genre.id}>{genre.name}</NavDropdown.Item>
 					))}
 				</NavDropdown>
 				</Nav>
