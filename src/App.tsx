@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router'
-import './App.css'
 import GenrePage from './pages/GenrePage'
 import HomePage from './pages/HomePage'
 import MovieDetailsPage from './pages/MovieDetailsPage'

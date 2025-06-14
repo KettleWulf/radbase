@@ -1,0 +1,23 @@
+.rating-badge {
+	position: absolute;
+	top: 3%;
+	left: 97%;
+	transform: translate(-50%, -50%);
+	background: #aa4b6b;
+	background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #3b8c9979, #6b6b8380, #aa4b6b79); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	color: white;
+	border-radius: 50%;
+	width: 48px;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	font-size: 0.9rem;
+	cursor: default;
+}
+.rating-badge-wrapper {
+	position: relative;
+}

@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useMoviesByGenre } from "../hooks/useMoviesByGenre";
 import { Card, Spinner, Alert } from "react-bootstrap";
 import { useGenres } from "../hooks/useGenres";
@@ -17,7 +17,7 @@ const GenrePage = () => {
 		isError,
 	} = useMoviesByGenre(genreId);
 
-	const genreName = genres.find((genre) => genre.id === genreId)?.name ?? "Okänd genre";
+	const genreName = genres.find((genre) => genre.id === genreId)?.name ?? "Genre name not found";
 
 
 
@@ -49,30 +49,42 @@ const GenrePage = () => {
 
 	return (
 		<div className="container mt-4">
-			<h2 className="mb-4 text-capitalize">{genreName ? genreName : "Unknown Genre"}</h2>
+			<h2 className="mb-4 text-capitalize">{genreName}</h2>
 			<div className="row">
 				{data.results.map((movie) => (
-					<div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={movie.id}>
-						<Card className="h-100">
-							<Card.Img
-								variant="top"
-								src={
-									movie.poster_path
-										? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-										: "https://via.placeholder.com/500x750?text=Ingen+bild"
-								}
-								alt={movie.title}
-							/>
-							<Card.Body className="d-flex flex-column">
-								<Card.Title>{movie.title}</Card.Title>
-								<Card.Text>
-									{movie.overview
-										? movie.overview.slice(0, 100) + "..."
-										: "Ingen beskrivning tillgänglig."}
-								</Card.Text>
-								<small className="text-muted mt-auto">Släppt: {movie.release_date}</small>
-							</Card.Body>
-						</Card>
+					<div className="col-xs-6 col-sm-6 col-md-4 col-xl-2 mb-4 h-100" key={movie.id}>
+						<div className="rating-badge-wrapper card-wrapper">
+							<Card
+								as={Link}
+								to={`/movie/${movie.id}`}
+								className="h-100 text-decoration-none text-dark"
+							>
+								<div className="card-image-wrapper">
+										<Card.Img
+											variant="top"
+											src={
+												movie.poster_path
+													? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+													: "https://via.placeholder.com/500x750?text=Ingen+bild"
+											}
+											alt={movie.title}
+										/>
+								</div>
+								<Card.Body className="d-flex flex-column">
+									<Card.Title className="card-title-clamp">{movie.title}</Card.Title>
+									<small className="text-muted mt-auto d-block">
+										Released: {movie.release_date}
+									</small>
+								</Card.Body>
+							</Card>
+
+							<div
+								className="rating-badge"
+								title={`# votes ${movie.vote_count} `}
+							>
+								{movie.vote_average.toFixed(1)}
+							</div>
+						</div>
 					</div>
 				))}
 			</div>
