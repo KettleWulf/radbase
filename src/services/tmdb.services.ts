@@ -1,5 +1,5 @@
 import api from "../lib/api"
-import { type PaginatedResponse, type Genre, type GenreResponse, type Movie, type MovieDetails } from "./tmdb.types";
+import { type PaginatedResponse, type Genre, type GenreResponse, type Movie, type MovieDetails, type CastResponse } from "./tmdb.types";
 
 export const getGenres = async (): Promise<Genre[]> => {
 	const res = await api.get<GenreResponse>("/genre/movie/list");
@@ -13,6 +13,7 @@ export const getMoviesByGenre = async (genreId: number, page: number) => {
 			page,
 			include_adult: false,
 			region: "US",
+			sort_by: "popularity.desc",
 		}
 	});
 	return res.data;
@@ -20,5 +21,22 @@ export const getMoviesByGenre = async (genreId: number, page: number) => {
 
 export const getMovieById = async (movieId: number) => {
 	const res = await api.get<MovieDetails>("/movie/" + movieId);
+	return res.data
+}
+
+export const getMoviesByQuery = async (query: string, page: number) => {
+	const res = await api.get<PaginatedResponse<Movie>>("/search/movie", {
+		params: {
+			query,
+			page,
+			include_adult: false,
+			region: "US",
+		}
+	});
+	return res.data;
+}
+
+export const getCastByMovieId = async (movieId: number) => {
+	const res = await api.get<CastResponse>(`/movie/${movieId}/credits`);
 	return res.data
 }

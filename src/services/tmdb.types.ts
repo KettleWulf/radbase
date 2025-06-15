@@ -40,6 +40,12 @@ export interface Genre {
 	name: string;
 }
 
+export interface CastResponse {
+	id: number;
+	cast: CastMember[];
+};
+
+
 export interface CastMember {
 	adult: boolean;
 	gender: number;

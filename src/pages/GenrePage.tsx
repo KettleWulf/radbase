@@ -5,6 +5,7 @@ import { useGenres } from "../hooks/useGenres";
 import MoveListCard from "../components/MoveListCard";
 
 
+
 const GenrePage = () => {
 	const { id } = useParams();
 	const genreId = Number(id);
@@ -19,6 +20,8 @@ const GenrePage = () => {
 	} = useMoviesByGenre(genreId);
 
 	const genreName = genres.find((genre) => genre.id === genreId)?.name ?? "Genre name not found";
+
+
 
 
 
@@ -50,6 +53,7 @@ const GenrePage = () => {
 
 	return (
 		<div className="container mt-4">
+			<title>{`KettleDB | ${genreName}`}</title>
 			<h2 className="mb-4 text-capitalize">{genreName}</h2>
 			
 			<Row xs={2} sm={2} md={4} xl={5} className="g-4">

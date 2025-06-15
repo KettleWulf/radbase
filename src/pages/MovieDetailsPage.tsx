@@ -26,9 +26,13 @@ const MovieDetailsPage = () => {
 	}
 
 	return (
-		<div className="container mt-5">
+		<div className="container mt-5 rating-badge-wrapper">
+
+			<title>{`KettleDB | ${movie.title}`}</title>
+
 			<div className="row">
 				<div className="col-md-4 mb-4">
+					
 					<img
 						src={
 							movie.poster_path
@@ -64,6 +68,9 @@ const MovieDetailsPage = () => {
 							))}
 						</div>
 					)}
+					<div className="rating-badge" title={`# votes ${movie.vote_count}`}>
+						{movie.vote_average.toFixed(1)}
+					</div>
 
 					<p>{movie.overview || "Description not yet available."}</p>
 				</div>
