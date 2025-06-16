@@ -22,7 +22,7 @@ export interface Movie {
 	video: boolean;
 }
 
-export interface MovieDetails extends Omit<Movie, 'genre_ids'> {
+export interface MovieDetails extends Omit<Movie, "genre_ids"> {
 	genres: Genre[];
 	runtime: number;
 	status: string;
@@ -58,5 +58,40 @@ export interface CastMember {
 	cast_id: number;
 	character: string;
 	credit_id: string;
+	order: number;
+}
+
+export interface ActorDetailsWithMovies {
+	id: number;
+	name: string;
+	birthday: string | null;
+	deathday: string | null;
+	biography: string;
+	place_of_birth: string | null;
+	profile_path: string | null;
+	known_for_department: string;
+	also_known_as: string[];
+	popularity: number;
+	imdb_id: string | null;
+	homepage: string | null;
+
+	movie_credits: MovieCredits;
+}
+
+export interface MovieCredits {
+	cast: MovieCreditItem[];
+}
+
+export interface MovieCreditItem extends Omit<Movie, "overview"> {
+	id: number;
+	title: string;
+	original_title: string;
+	release_date: string;
+	character?: string;
+	poster_path: string | null;
+	vote_average: number;
+	vote_count: number;
+	genre_ids: number[];
+	adult: boolean;
 	order: number;
 }

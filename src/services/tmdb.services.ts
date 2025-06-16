@@ -1,5 +1,5 @@
 import api from "../lib/api"
-import { type PaginatedResponse, type Genre, type GenreResponse, type Movie, type MovieDetails, type CastResponse } from "./tmdb.types";
+import { type PaginatedResponse, type Genre, type GenreResponse, type Movie, type MovieDetails, type CastResponse, type ActorDetailsWithMovies } from "./tmdb.types";
 
 export const getGenres = async (): Promise<Genre[]> => {
 	const res = await api.get<GenreResponse>("/genre/movie/list");
@@ -38,5 +38,14 @@ export const getMoviesByQuery = async (query: string, page: number) => {
 
 export const getCastByMovieId = async (movieId: number) => {
 	const res = await api.get<CastResponse>(`/movie/${movieId}/credits`);
+	return res.data
+}
+
+export const getActorWithMovies = async (actorId: number) => {
+	const res = await api.get<ActorDetailsWithMovies>("/person/" + actorId, {
+		params: {
+			append_to_response: "movie_credits",
+		}
+	});
 	return res.data
 }
