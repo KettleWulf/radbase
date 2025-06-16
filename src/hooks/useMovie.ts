@@ -4,7 +4,7 @@ import { getMovieById } from "../services/tmdb.services";
 
 export const useMovie = (movieId: number) => {
 	return useQuery({
-		queryKey: [movieId],
+		queryKey: ["movie", movieId],
 		queryFn: () => getMovieById(movieId),
 	});
 }

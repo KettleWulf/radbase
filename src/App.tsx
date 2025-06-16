@@ -5,6 +5,7 @@ import MovieDetailsPage from './pages/MovieDetailsPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ActorDetailsPage from './pages/ActorDetailsPage'
 import Navigation from './components/Navigation'
+import "swiper/swiper-bundle.css";
 
 function App() {
 	return (
