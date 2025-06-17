@@ -3,22 +3,20 @@ import { useEffect, useState } from "react";
 import { getMovieById } from "../services/tmdb.services";
 
 export const useRecentMovies = () => {
- 	const [storedMovieIds, setStoredMovieIds] = useState<number[] | null>(null);
-
- 	const movieIds = JSON.parse(localStorage.getItem("recentMovies") || "[]") as number[];
-
-	const filteredMovieIds = movieIds.filter((id): id is number => typeof id === "number");
-	localStorage.setItem("recentMovies", JSON.stringify(filteredMovieIds));
+ 	const [storedMovieIds, setStoredMovieIds] = useState<number[]>([]);
 
 	useEffect(() => {
-		setStoredMovieIds(filteredMovieIds)
-	}, [filteredMovieIds])
+		const movieIds = JSON.parse(localStorage.getItem("recentMovies") || "[]") as number[];
+		const filteredMovieIds = movieIds.filter((id): id is number => typeof id === "number");
+		setStoredMovieIds(filteredMovieIds);
+	}, [])
+
 
 	const movieQueries = useQueries({
-		queries: movieIds.map((id) => ({
-			queryKey: ["movie", id],
+		queries: storedMovieIds.map((id) => ({
+			queryKey: ["recent", id],
 			queryFn: () => getMovieById(id),
-			enabled: !!storedMovieIds,
+			enabled: storedMovieIds.length > 0
 		})),
 	});
 

@@ -6,12 +6,14 @@ import NotFoundPage from './pages/NotFoundPage'
 import ActorDetailsPage from './pages/ActorDetailsPage'
 import Navigation from './components/Navigation'
 import "swiper/swiper-bundle.css";
+import RecentMoviesToggle from './components/RecentMovieToggle'
 
 function App() {
 	return (
 		<div id="app">
 			<Navigation />
-			
+			<RecentMoviesToggle />
+
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/genre/:id" element={<GenrePage />} />

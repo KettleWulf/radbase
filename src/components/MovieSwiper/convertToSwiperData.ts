@@ -1,7 +1,7 @@
-import type { MovieSwiperData } from "./MovieSwiper";
-import type { Movie, MovieCreditItem } from "../../services/tmdb.types";
+import type { MovieSwiperData } from "./MovieSwiper.types";
+import type { Movie, MovieCreditItem, MovieDetails } from "../../services/tmdb.types";
 
-export const convertToSwiperData = (input: Movie[] | MovieCreditItem[]): MovieSwiperData[] => {
+export const convertToSwiperData = (input: Movie[] | MovieCreditItem[] | MovieDetails[]): MovieSwiperData[] => {
 	return [...input].map((item) => ({
 		id: item.id,
 		title: item.title,
