@@ -53,7 +53,7 @@ const GenrePage = () => {
 
 	return (
 		<div className="container mt-4">
-			<title>{`KettleDB | ${genreName}`}</title>
+			<title>{`RADb | ${genreName}`}</title>
 			<h2 className="mb-4 text-capitalize">{genreName}</h2>
 			
 			<Row xs={2} sm={2} md={4} xl={5} className="g-4">
