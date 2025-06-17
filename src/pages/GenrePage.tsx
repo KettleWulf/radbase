@@ -58,7 +58,7 @@ const GenrePage = () => {
 			
 			<Row xs={2} sm={2} md={4} xl={5} className="g-4">
 				{data.results.map((movie) => (
-					<MoveListCard movie={movie} />
+					<MoveListCard key={movie.id} movie={movie} />
 				))}
 			</Row>
 		</div>
