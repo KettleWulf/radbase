@@ -1,15 +1,13 @@
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { Spinner, Alert, Badge } from "react-bootstrap";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation } from "swiper/modules";
 
 import { useActorWithMovies } from "../hooks/useActorWithCredits";
-import { sortByRoleHierarchy } from "../utils/sortByRoleHierarchy";
+import MovieSwiper from "../components/MovieSwiper/MovieSwiper";
+import { convertToSwiperData } from "../components/MovieSwiper/convertToSwiperData";
 
 const ActorDetailsPage = () => {
 	const { id } = useParams();
 	const actorId = Number(id);
-	const navigate = useNavigate();
 
 	const { data: actor, isError, isLoading } = useActorWithMovies(actorId);
 
@@ -69,39 +67,10 @@ const ActorDetailsPage = () => {
 					</div>
 
 					<div>
-						{actor.movie_credits && (
+						{actor.movie_credits.cast && (
 							<>
 								<h5 className="mt-5">Known for:</h5>
-								<Swiper
-									slidesPerView="auto"
-									spaceBetween={10}
-									freeMode={true}
-									navigation={true}
-									modules={[FreeMode, Navigation]}
-									className="mySwiper py-2"
-								>
-									{sortByRoleHierarchy(actor.movie_credits.cast).map((movie) => (
-										<SwiperSlide
-											key={movie.id}
-											style={{ width: 120, cursor: "pointer" }}
-											onClick={() => navigate(`/movie/${movie.id}`)}
-										>
-											<div className="text-center">
-												<img
-													src={
-														movie.poster_path
-															? `https://image.tmdb.org/t/p/w185${movie.poster_path}`
-															: "/images/placeholder-big.png"
-													}
-													alt={movie.title}
-													className="img-fluid rounded mb-1 shadow-sm"
-												/>
-												<small className="fw-bold d-block">{movie.title}</small>
-												<small className="text-muted">{movie.character}</small>
-											</div>
-										</SwiperSlide>
-									))}
-								</Swiper>
+								<MovieSwiper movies={convertToSwiperData(actor.movie_credits.cast)} />
 							</>
 						)}
 					</div>

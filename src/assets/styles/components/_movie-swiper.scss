@@ -1,0 +1,19 @@
+.swiper-fade-left,
+.swiper-fade-right {
+	position: absolute;
+	top: 0;
+	width: 30px;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.swiper-fade-left {
+	left: 0;
+	background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+}
+
+.swiper-fade-right {
+	right: 0;
+	background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
+}
