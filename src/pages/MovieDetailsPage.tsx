@@ -6,6 +6,8 @@ import { Spinner, Alert, Badge } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper/modules";
 import { useEffect } from "react";
+import { useRecommendedMovies } from "../hooks/useRecommendedMovies";
+import MovieSwiper from "../components/MovieSwiper/MovieSwiper";
 
 const MovieDetailsPage = () => {
 	const { id } = useParams();
@@ -13,6 +15,7 @@ const MovieDetailsPage = () => {
 	const navigate = useNavigate();
 
 	const { data: movie, isError, isLoading } = useMovie(movieId);
+	const {data: recommended } = useRecommendedMovies(movieId);
 	const { data: credits } = useCredits(movieId);
 
 	useEffect(() => {
@@ -87,42 +90,57 @@ const MovieDetailsPage = () => {
 					<div>
 						{credits && (
 							<>
-								<h5 className="">Cast:</h5>
-								<Swiper
-									slidesPerView="auto"
-									spaceBetween={10}
-									freeMode={true}
-									navigation={true}
-									modules={[FreeMode, Navigation]}
-									className="mySwiper py-2"
-								>
-									{credits.cast.slice(0, 20).map((actor) => (
-										<SwiperSlide
-											key={actor.id}
-											style={{ width: 120, cursor: "pointer" }}
-											onClick={() => navigate(`/actor/${actor.id}`)}
-										>
-											<div className="text-center">
-												<img
-													src={
-														actor.profile_path
-															? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
-															: "/images/placeholder-big.png"
-													}
-													alt={actor.name}
-													className="img-fluid rounded mb-1 shadow-sm"
-												/>
-												<small className="fw-bold d-block">{actor.name}</small>
-												<small className="text-muted">{actor.character}</small>
-											</div>
-										</SwiperSlide>
-									))}
-								</Swiper>
+								<h5>Cast:</h5>
+								<div className="position-relative">
+									<Swiper
+										slidesPerView="auto"
+										spaceBetween={10}
+										freeMode={true}
+										navigation={true}
+										modules={[FreeMode, Navigation]}
+										className="mySwiper py-2"
+									>
+										{credits.cast.slice(0, 20).map((actor) => (
+											<SwiperSlide
+												key={actor.id}
+												style={{ width: 120, cursor: "pointer" }}
+												onClick={() => navigate(`/actor/${actor.id}`)}
+											>
+												<div className="text-center">
+													<img
+														src={
+															actor.profile_path
+																? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
+																: "/images/placeholder-big.png"
+														}
+														alt={actor.name}
+														className="img-fluid rounded mb-1 shadow-sm"
+													/>
+													<small className="fw-bold d-block">{actor.name}</small>
+													<small className="text-muted">{actor.character}</small>
+												</div>
+											</SwiperSlide>
+										))}
+									</Swiper>
+									<div className="swiper-fade-left"></div>
+									<div className="swiper-fade-right"></div>
+								</div>
 							</>
 						)}
 					</div>
 				</div>
 			</div>
+			{recommended && (
+				
+				<div className="row">
+					<hr className="my-3 mx-auto border w-75"/>
+					<h6>Others liked:</h6>
+					<div>
+						<MovieSwiper isSmall movies={recommended.results}/>
+
+					</div>
+				</div>
+			)}
 		</div>
 	);
 };

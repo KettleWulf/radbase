@@ -28,6 +28,7 @@ export const getRecommendedMoviesById = async (movieId: number) => {
 	const res = await api.get<PaginatedResponse<Movie>>(`/movie/${movieId}/recommendations`, {
 		params: {
 			include_adult: false,
+			sort_by: "popularity.desc",
 		}
 	});
 	return res.data

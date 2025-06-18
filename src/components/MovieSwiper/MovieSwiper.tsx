@@ -7,9 +7,10 @@ import type { MovieSwiperData } from "./MovieSwiper.types";
 
 interface MovieSwiperProps {
 	movies: MovieSwiperData[];
+	isSmall?: boolean
 } 
 
-const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies }) => {
+const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies, isSmall }) => {
 	const navigate = useNavigate();
 
 	return (
@@ -25,7 +26,7 @@ const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies }) => {
 				{sortMoviesByPopularity(movies).map((movie) => (
 					<SwiperSlide
 						key={movie.id}
-						style={{ width: 120, cursor: "pointer" }}
+						style={{ width: isSmall ? 90 : 120, cursor: "pointer" }}
 						onClick={() => navigate(`/movie/${movie.id}`)}
 					>
 						<div className="text-center">
