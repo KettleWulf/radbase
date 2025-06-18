@@ -7,6 +7,7 @@ import ActorDetailsPage from './pages/ActorDetailsPage'
 import Navigation from './components/Navigation'
 import "swiper/swiper-bundle.css";
 import RecentMoviesToggle from './components/RecentMovieToggle'
+import SearchPage from './pages/SearchPage'
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 				<Route path="/genre/:id" element={<GenrePage />} />
 				<Route path="/movie/:id" element={<MovieDetailsPage />} />
 				<Route path="/actor/:id" element={<ActorDetailsPage />} />
+				<Route path="/search" element={<SearchPage />} />
 
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>

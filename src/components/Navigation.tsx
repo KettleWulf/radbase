@@ -1,12 +1,12 @@
-import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router";
 import { useGenres } from "../hooks/useGenres";
-import { useState } from "react";
 import SearchBar from "./SearchBar";
+import { useSearch } from "../hooks/useSearch";
 
 const Navigation = () => {
 	const genres = useGenres();
-	const navigate = useNavigate();
+	const { query, handleSearch } = useSearch();
 
 
 	return (
@@ -21,25 +21,24 @@ const Navigation = () => {
 				</Navbar.Brand>
 
 
-				<div className="d-flex align-items-center ms-auto">
+				<SearchBar onSearch={handleSearch} currentQuery={query}/>
 
-					<SearchBar />
 
-					<Navbar.Toggle aria-controls="main-navbar" />
-					<Navbar.Collapse id="main-navbar">
-						<Nav className="me-auto">
-							<Nav.Link as={Link} to="/">Start</Nav.Link>
-							<Nav.Link as={Link} to="/popular">Popular</Nav.Link>
-							<Nav.Link as={Link} to="/top-rated">Topplist</Nav.Link>
-							<Nav.Link as={Link} to="/now-playing">Now Playing</Nav.Link>
-							<NavDropdown title="Genres" id="genres-dropdown">
-								{genres.length > 1 ? genres.map(genre => (
-									<NavDropdown.Item as={Link} key={genre.id} to={`/genre/${genre.id}`}>{genre.name}</NavDropdown.Item>
-								)) : <NavDropdown.Item>Loading genres...</NavDropdown.Item>}
-							</NavDropdown>
-						</Nav>
-					</Navbar.Collapse>
-				</div>
+				<Navbar.Toggle aria-controls="main-navbar" />
+				<Navbar.Collapse id="main-navbar">
+					<Nav className="ms-auto d-flex align-items-center">
+						<Nav.Link as={Link} to="/">Start</Nav.Link>
+						<Nav.Link as={Link} to="/popular">Popular</Nav.Link>
+						<Nav.Link as={Link} to="/top-rated">Topplist</Nav.Link>
+						<Nav.Link as={Link} to="/now-playing">Now Playing</Nav.Link>
+						<NavDropdown title="Genres" id="genres-dropdown">
+							{genres.length > 1 ? genres.map(genre => (
+								<NavDropdown.Item as={Link} key={genre.id} to={`/genre/${genre.id}`}>{genre.name}</NavDropdown.Item>
+							)) : <NavDropdown.Item>Loading genres...</NavDropdown.Item>}
+						</NavDropdown>
+					</Nav>
+				</Navbar.Collapse>
+
 
 			
 			</Container>
