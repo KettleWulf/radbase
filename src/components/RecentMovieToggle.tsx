@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRecentMovies } from "../hooks/useRecentMovies";
 import MovieSwiper from "./MovieSwiper/MovieSwiper";
 import { useLocation } from "react-router";
@@ -10,12 +10,25 @@ const RecentMoviesToggle = () => {
 	const { movies, isLoading, isError } = useRecentMovies();
 	const location = useLocation();
 
+	const toggleRef = useRef<HTMLDivElement | null>(null);
+
+	const handleClickOutside = (e: MouseEvent) => {
+		if (toggleRef.current && !toggleRef.current.contains(e.target as Node)) {
+			setIsOpen(false);
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => document.removeEventListener("mousedown", handleClickOutside);
+	}, []);
+
 	useEffect(() => {
 		setIsOpen(false);
 	}, [location.pathname]);
 
 	return (
-		<>
+		<div ref={toggleRef}>
 			{movies.length > 0 && <div className="position-relative">
 				<button
 					className="btn btn-sm btn-light position-absolute recent-toggle-button z-index-3"
@@ -29,8 +42,7 @@ const RecentMoviesToggle = () => {
 
 				{isOpen && (
 					<div
-						className="border-top border-light p-2 bg-white position-absolute top-100 end-0 w-50 shadow fade-in rounded"
-						style={{ zIndex: 1 }}
+						className="border-top border-light p-2 bg-white position-absolute top-100 end-0 w-75 shadow fade-in rounded z-index-2"
 					>
 						{isLoading && <p className="text-muted px-3">Loading...</p>}
 						{isError && <p className="text-danger px-3">Something went wrong.</p>}
@@ -40,7 +52,7 @@ const RecentMoviesToggle = () => {
 					</div>
 				)}
 			</div>}
-		</>
+		</div>
 	);
 };
 

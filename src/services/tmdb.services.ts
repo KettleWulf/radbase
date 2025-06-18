@@ -24,6 +24,15 @@ export const getMovieById = async (movieId: number) => {
 	return res.data
 }
 
+export const getRecommendedMoviesById = async (movieId: number) => {
+	const res = await api.get<PaginatedResponse<Movie>>(`/movie/${movieId}/recommendations`, {
+		params: {
+			include_adult: false,
+		}
+	});
+	return res.data
+}
+
 export const getMoviesByQuery = async (query: string, page: number) => {
 	const res = await api.get<PaginatedResponse<Movie>>("/search/movie", {
 		params: {

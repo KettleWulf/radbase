@@ -23,7 +23,7 @@ export const useRecentMovies = () => {
 	});
 
 	const movies = movieQueries
-		.filter((q) => q.data)
+		.filter((q) => q.data) // Förstår inte varför inte detta eliminerar risken för att movies är en undefined[]?
 		.map((q) => q.data);
 
 	const isLoading = movieQueries.some((q) => q.isLoading);
