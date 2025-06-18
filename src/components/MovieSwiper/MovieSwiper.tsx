@@ -39,7 +39,7 @@ const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies, isSmall }) => {
 								alt={movie.title}
 								className="img-fluid rounded mb-1 shadow-sm"
 							/>
-							<small className="fw-bold d-block">{movie.title}</small>
+							{<small className="fw-bold card-title-clamp" title={movie.title}>{movie.title}</small>}
 							{movie.character && <small className="text-muted">{movie.character}</small>}
 						</div>
 					</SwiperSlide>

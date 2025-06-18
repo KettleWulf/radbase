@@ -17,3 +17,18 @@
 	right: 0;
 	background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+	transform: translateY(-100%);
+	color: #1d1d1dad !important;
+	opacity: 0;
+
+	@media (min-width: 700px) {
+		opacity: 1;
+	}
+}
+
+.swiper-button-disabled {
+	opacity: 0 !important;
+}

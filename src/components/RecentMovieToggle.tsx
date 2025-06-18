@@ -42,12 +42,12 @@ const RecentMoviesToggle = () => {
 
 				{isOpen && (
 					<div
-						className="border-top border-light p-2 bg-white position-absolute top-100 end-0 w-75 shadow fade-in rounded z-index-2"
+						className="border-top border-light p-2 bg-white position-absolute top-100 end-0 shadow fade-in rounded z-index-2 w-50"
 					>
 						{isLoading && <p className="text-muted px-3">Loading...</p>}
 						{isError && <p className="text-danger px-3">Something went wrong.</p>}
 						{movies && (
-							<MovieSwiper movies={convertToSwiperData(movies as MovieDetails[])} />
+							<MovieSwiper isSmall movies={convertToSwiperData(movies as MovieDetails[])} />
 						)}
 					</div>
 				)}

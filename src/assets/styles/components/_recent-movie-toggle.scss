@@ -6,3 +6,11 @@
 	border-bottom-right-radius: 0.5rem;
 	box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
+
+.recent-toggle-width {
+	width: 100%;
+
+	@media (min-width: 700px) {
+		width: 35%;
+	}
+}
