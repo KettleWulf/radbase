@@ -28,6 +28,7 @@ const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies, isSmall }) => {
 						key={movie.id}
 						style={{ width: isSmall ? 90 : 120, cursor: "pointer" }}
 						onClick={() => navigate(`/movie/${movie.id}`)}
+						title={movie.title}
 					>
 						<div className="text-center">
 							<img
@@ -39,7 +40,7 @@ const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies, isSmall }) => {
 								alt={movie.title}
 								className="img-fluid rounded mb-1 shadow-sm"
 							/>
-							{<small className="fw-bold card-title-clamp" title={movie.title}>{movie.title}</small>}
+							{<small className="fw-bold card-title-clamp">{movie.title}</small>}
 							{movie.character && <small className="text-muted">{movie.character}</small>}
 						</div>
 					</SwiperSlide>
