@@ -7,10 +7,11 @@ import type { MovieSwiperData } from "./MovieSwiper.types";
 
 interface MovieSwiperProps {
 	movies: MovieSwiperData[];
-	isSmall?: boolean
+	isSmall?: boolean;
+	isBig?: boolean;
 } 
 
-const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies, isSmall }) => {
+const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies, isSmall, isBig }) => {
 	const navigate = useNavigate();
 
 	return (
@@ -26,9 +27,11 @@ const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies, isSmall }) => {
 				{sortMoviesByPopularity(movies).map((movie) => (
 					<SwiperSlide
 						key={movie.id}
-						style={{ width: isSmall ? 90 : 120, cursor: "pointer" }}
 						onClick={() => navigate(`/movie/${movie.id}`)}
 						title={movie.title}
+						style={{ 
+							width: isSmall ? 90 : isBig ? 150 : 120, 
+							cursor: "pointer" }}
 					>
 						<div className="text-center">
 							<img
@@ -40,7 +43,7 @@ const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies, isSmall }) => {
 								alt={movie.title}
 								className="img-fluid rounded mb-1 shadow-sm"
 							/>
-							{<small className="fw-bold card-title-clamp">{movie.title}</small>}
+							{!isBig && <small className="fw-bold card-title-clamp">{movie.title}</small>}
 							{movie.character && <small className="text-muted">{movie.character}</small>}
 						</div>
 					</SwiperSlide>

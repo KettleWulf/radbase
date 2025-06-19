@@ -1,13 +1,12 @@
-
 import { useSearchMovies } from "../hooks/useSearchMovies";
 import { Alert, Row, Spinner } from "react-bootstrap";
 import { useSearch } from "../hooks/useSearch";
 import { usePagination } from "../hooks/usePagination";
 import MoveListCard from "../components/MoveListCard";
 import Pagination from "../components/Pagination";
+import { motion } from "framer-motion";
 
 const SearchPage = () => {
-
 	const { page, handlePageChange } = usePagination();
 	const { query } = useSearch();
 	const { data, isLoading, isError } = useSearchMovies(query, page);
@@ -35,25 +34,35 @@ const SearchPage = () => {
 			</Alert>
 		);
 	}
-  return (
-	<div className="container mt-4">
-			<title>{`RADb | ${query}`}</title>
-			{/* <h1 className="visually-hidden">Search Page</h1> */}
-			<h2 className="mb-4 text-capitalize">Search</h2>
-			
-			<small className="text-muted ms-1 mb-2">Showing results for <em>"{query}"</em> - page {page} of {data.total_pages}</small>
-			<Row xs={2} sm={2} md={4} xl={5} className="g-4 position-relative">
-				{data.results.map((movie) => (
-					<MoveListCard key={movie.id} movie={movie} />
-				))}
-				<Pagination
-					page={page}
-					totalPages={data.total_pages}
-					onPageChange={handlePageChange}
-				/>
-			</Row>
-		</div>
-  )
-}
+	return (
+		<motion.div
+			key={page}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 0.6 }}
+		>
+			<div className="container mt-4">
+				<title>{`RADb | ${query}`}</title>
+				{/* <h1 className="visually-hidden">Search Page</h1> */}
+				<h2 className="mb-4 text-capitalize">Search</h2>
 
-export default SearchPage
+				<small className="text-muted ms-1 mb-2">
+					Showing results for <em>"{query}"</em> - page {page} of{" "}
+					{data.total_pages}
+				</small>
+				<Row xs={2} sm={2} md={4} xl={5} className="g-4 position-relative">
+					{data.results.map((movie) => (
+						<MoveListCard key={movie.id} movie={movie} />
+					))}
+					<Pagination
+						page={page}
+						totalPages={data.total_pages}
+						onPageChange={handlePageChange}
+					/>
+				</Row>
+			</div>
+		</motion.div>
+	);
+};
+
+export default SearchPage;

@@ -28,9 +28,6 @@ const Navigation = () => {
 				<Navbar.Collapse id="main-navbar">
 					<Nav className="ms-auto d-flex align-items-center">
 						<Nav.Link as={Link} to="/">Start</Nav.Link>
-						<Nav.Link as={Link} to="/popular">Popular</Nav.Link>
-						<Nav.Link as={Link} to="/top-rated">Topplist</Nav.Link>
-						<Nav.Link as={Link} to="/now-playing">Now Playing</Nav.Link>
 						<NavDropdown 
 							title="Browse Genres" 
 							id="genres-dropdown" 

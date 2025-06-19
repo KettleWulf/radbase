@@ -3,6 +3,8 @@
 @use "components/movie-swiper";
 @use "components/navigation";
 @use "components/pagination";
+@use "components/hero-slider";
+@use "components/time-frame-toggle";
 
 .z-index-1 {
 	z-index: 1;

@@ -6,5 +6,6 @@ export const useMoviesByGenre = (genreId: number, page: number) => {
 	return useQuery({
 		queryKey: [genreId, page],
 		queryFn: () => getMoviesByGenre(genreId, page),
+		placeholderData: (prev) => prev,
 	});
 }
