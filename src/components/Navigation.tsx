@@ -31,9 +31,18 @@ const Navigation = () => {
 						<Nav.Link as={Link} to="/popular">Popular</Nav.Link>
 						<Nav.Link as={Link} to="/top-rated">Topplist</Nav.Link>
 						<Nav.Link as={Link} to="/now-playing">Now Playing</Nav.Link>
-						<NavDropdown title="Genres" id="genres-dropdown">
+						<NavDropdown 
+							title="Browse Genres" 
+							id="genres-dropdown" 
+							className="transparent-dropdown"
+						>
 							{genres.length > 1 ? genres.map(genre => (
-								<NavDropdown.Item as={Link} key={genre.id} to={`/genre/${genre.id}`}>{genre.name}</NavDropdown.Item>
+								<NavDropdown.Item 
+									as={Link} 
+									key={genre.id} 
+									to={`/genre/${genre.id}`}
+									>{genre.name}
+								</NavDropdown.Item>
 							)) : <NavDropdown.Item>Loading genres...</NavDropdown.Item>}
 						</NavDropdown>
 					</Nav>

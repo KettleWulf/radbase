@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router";
 import { useMovie } from "../hooks/useMovie";
 import { useCredits } from "../hooks/useCredits";
 import { Spinner, Alert, Badge } from "react-bootstrap";
-
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper/modules";
 import { useEffect } from "react";
@@ -43,6 +43,11 @@ const MovieDetailsPage = () => {
 	}
 
 	return (
+		<motion.div
+		initial={{ opacity: 0 }}
+		animate={{ opacity: 1 }}
+		transition={{ duration: 0.6 }}
+		>
 		<div className="container mt-5 rating-badge-wrapper">
 			<title>{`RADb | ${movie.title}`}</title>
 
@@ -142,6 +147,7 @@ const MovieDetailsPage = () => {
 				</div>
 			)}
 		</div>
+		</motion.div>
 	);
 };
 

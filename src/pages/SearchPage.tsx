@@ -4,6 +4,7 @@ import { Alert, Row, Spinner } from "react-bootstrap";
 import { useSearch } from "../hooks/useSearch";
 import { usePagination } from "../hooks/usePagination";
 import MoveListCard from "../components/MoveListCard";
+import Pagination from "../components/Pagination";
 
 const SearchPage = () => {
 
@@ -37,13 +38,19 @@ const SearchPage = () => {
   return (
 	<div className="container mt-4">
 			<title>{`RADb | ${query}`}</title>
-			<h1 className="visually-hidden">Search Page</h1>
+			{/* <h1 className="visually-hidden">Search Page</h1> */}
+			<h2 className="mb-4 text-capitalize">Search</h2>
 			
-			<small className="text-muted ms-1">Showing results for <em>"{query}"</em></small>
-			<Row xs={2} sm={2} md={4} xl={5} className="g-4">
+			<small className="text-muted ms-1 mb-2">Showing results for <em>"{query}"</em> - page {page} of {data.total_pages}</small>
+			<Row xs={2} sm={2} md={4} xl={5} className="g-4 position-relative">
 				{data.results.map((movie) => (
 					<MoveListCard key={movie.id} movie={movie} />
 				))}
+				<Pagination
+					page={page}
+					totalPages={data.total_pages}
+					onPageChange={handlePageChange}
+				/>
 			</Row>
 		</div>
   )

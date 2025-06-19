@@ -13,7 +13,7 @@ const MoveListCard: React.FC<MoveListCardProps> = ({ movie }) => {
 				<Card
 					as={Link}
 					to={`/movie/${movie.id}`}
-					className="h-100 text-decoration-none text-dark"
+					className="h-100 text-decoration-none card-glass-static"
 				>
 					<div className="card-image-wrapper">
 						<Card.Img

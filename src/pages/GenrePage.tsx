@@ -3,6 +3,9 @@ import { useMoviesByGenre } from "../hooks/useMoviesByGenre";
 import { Spinner, Alert, Row, } from "react-bootstrap";
 import { useGenres } from "../hooks/useGenres";
 import MoveListCard from "../components/MoveListCard";
+import { motion } from "framer-motion";
+import { usePagination } from "../hooks/usePagination";
+import Pagination from "../components/Pagination";
 
 
 
@@ -13,11 +16,14 @@ const GenrePage = () => {
 	const genres  = useGenres();
 	console.log("genres", genres);
 
+	const { page, handlePageChange} = usePagination()
+	
 	const {
 		data,
 		isLoading,
 		isError,
-	} = useMoviesByGenre(genreId);
+	} = useMoviesByGenre(genreId, page);
+
 
 	const genreName = genres.find((genre) => genre.id === genreId)?.name ?? "Genre name not found";
 
@@ -52,16 +58,28 @@ const GenrePage = () => {
 	}
 
 	return (
-		<div className="container mt-4">
-			<title>{`RADb | ${genreName}`}</title>
-			<h2 className="mb-4 text-capitalize">{genreName}</h2>
-			
-			<Row xs={2} sm={2} md={4} xl={5} className="g-4">
-				{data.results.map((movie) => (
-					<MoveListCard key={movie.id} movie={movie} />
-				))}
-			</Row>
-		</div>
+		<motion.div
+		initial={{ opacity: 0 }}
+		animate={{ opacity: 1 }}
+		transition={{ duration: 0.6 }}
+		>
+			<div className="container mt-4" >
+				<title>{`RADb | ${genreName}`}</title>
+				<h2 className="mb-4 text-capitalize">{genreName}</h2>
+
+					<Row xs={2} sm={2} md={4} xl={5} className="g-4 position-relative">
+						{data.results.map((movie) => (
+							<MoveListCard key={movie.id} movie={movie} />
+						))}
+
+						<Pagination
+						page={page}
+						totalPages={data.total_pages}
+						onPageChange={handlePageChange}
+						/>
+					</Row>
+			</div>
+		</motion.div>
 	);
 };
 
