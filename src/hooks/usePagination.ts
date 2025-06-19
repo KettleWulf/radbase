@@ -6,6 +6,7 @@ export const usePagination = () => {
 	const page = Number(searchParams.get("page")) || 1;
 
 	const handlePageChange = (newPage: number) => {
+		
 		const newParams = new URLSearchParams(searchParams);
 		newParams.set("page", newPage.toString());
 		setSearchParams(newParams);

@@ -2,13 +2,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 
-interface FloatingPaginatorProps {
+interface PaginationProps {
 	page: number;
 	totalPages: number;
 	onPageChange: (newPage: number) => void;
 }
 
-const Pagination: React.FC<FloatingPaginatorProps> = ({ page, totalPages, onPageChange }) => {
+const Pagination: React.FC<PaginationProps> = ({ page, totalPages, onPageChange }) => {
 	return (
 	<AnimatePresence>
 		{page > 1 && (

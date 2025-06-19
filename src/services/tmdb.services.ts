@@ -59,3 +59,15 @@ export const getActorWithMovies = async (actorId: number) => {
 	});
 	return res.data
 }
+
+export type Category = "popular" | "top_rated" | "now_playing";
+
+export const getMoviesByCategory = async (category: Category) => {
+	const res = await api.get<PaginatedResponse<Movie>>("/movie/" + category, {
+		params: {
+			include_adult: false,
+			region: "US",
+		}
+	});
+	return res.data;
+};
