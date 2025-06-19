@@ -6,6 +6,5 @@ export const useSearchMovies = (query: string, page = 1) => {
 	return useQuery({
 		queryKey: [query, page],
 		queryFn: () => getMoviesByQuery(query, page),
-		placeholderData: (prev) => prev,
 	});
 }
