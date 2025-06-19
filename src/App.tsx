@@ -9,6 +9,7 @@ import "swiper/swiper-bundle.css";
 import RecentMoviesToggle from './components/RecentMovieToggle'
 import SearchPage from './pages/SearchPage'
 import { AnimatePresence } from "framer-motion";
+import Footer from './components/Footer'
 
 function App() {
 	const location = useLocation();
@@ -28,6 +29,7 @@ function App() {
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
 			</AnimatePresence>
+			<Footer />
 		</div>
 		
 	)

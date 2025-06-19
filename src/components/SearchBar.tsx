@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import InputGroup from "react-bootstrap/InputGroup"
 import { IoSearchCircle } from "react-icons/io5";
-// import { useNavigate } from "react-router";
+
 
 interface SearchBarProps {
 	onSearch: (query: string) => void;

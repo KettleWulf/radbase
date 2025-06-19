@@ -10,12 +10,25 @@
 
 .swiper-fade-left {
 	left: 0;
-	background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+	[data-bs-theme="light"] & {
+		background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+
+	}
+
+	[data-bs-theme="dark"] & {
+		background: linear-gradient(to right, #242424, rgba(255, 255, 255, 0));
+	}
 }
 
 .swiper-fade-right {
 	right: 0;
-	background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
+	[data-bs-theme="light"] & {
+		background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
+	}
+
+	[data-bs-theme="dark"] & {
+		background: linear-gradient(to left, #242424, rgba(255, 255, 255, 0));
+	}
 }
 
 .swiper-button-prev,

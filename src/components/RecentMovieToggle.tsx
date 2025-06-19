@@ -42,7 +42,7 @@ const RecentMoviesToggle = () => {
 
 				{isOpen && (
 					<div
-						className="border-top border-light p-2 bg-white position-absolute top-100 end-0 shadow fade-in rounded z-index-2 w-50"
+						className="border-top position-absolute top-100 end-0 shadow fade-in rounded z-index-2 w-50 recent-toggle-dropdown"
 					>
 						{isLoading && <p className="text-muted px-3">Loading...</p>}
 						{isError && <p className="text-danger px-3">Something went wrong.</p>}

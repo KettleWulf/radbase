@@ -1,0 +1,14 @@
+.tmdb-logo {
+	height: 20px;
+	margin-left: 8px;
+	vertical-align: middle;
+}
+
+.github-link {
+	text-decoration: none;
+	color: inherit;
+
+	&:hover {
+		color: orangered;
+	}
+}

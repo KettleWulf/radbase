@@ -1,16 +1,38 @@
+.navigation {
+background: #020024;
+background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(15, 15, 77, 1) 86%, rgba(47, 37, 161, 1) 100%);
+
+	color: white;
+	* {
+		color: inherit;
+	}
+}
 
 .logo-nav {
-	height: 40px; 
+	height: 40px;
 	object-fit: contain;
 }
 
 .search-bar {
-	border-color: white !important;
+	background-color: #fff !important;
+	color: #000 !important;
+	border: 1px solid #ccc !important;
+	border: none;
+
+	&::placeholder {
+
+		opacity: 1;
+	}
 
 	&:focus {
-		box-shadow: none;
-		border-color: white !important;
-		display: inline;
+		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+		border-color: #cfd6df;
+	}
+
+
+	[data-bs-theme="dark"] & {
+		background-color: #45405e !important;
+		color: azure !important;
 	}
 }
 
@@ -22,5 +44,3 @@
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 	border-radius: 0.5rem;
 }
-
-

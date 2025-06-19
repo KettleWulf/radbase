@@ -20,7 +20,7 @@ const TimeframeToggle: React.FC<TimeframeToggleProps> = ({ timeframe, onToggle }
 				name="timeframe"
 				value={timeframe}
 				onChange={onToggle}
-				className="rounded-pill overflow-hidden"
+				className="rounded-pill overflow-hidden timeframe-toggle-group"
 			>
 				{(["day", "week"] as Timeframe[]).map((val) => (
 					<ToggleButton
@@ -33,7 +33,7 @@ const TimeframeToggle: React.FC<TimeframeToggleProps> = ({ timeframe, onToggle }
 						{timeframe === val && (
 							<motion.div
 								layoutId="pill-bg"
-								className="position-absolute top-0 start-0 w-100 h-100 rounded-pill bg-light shadow"
+								className="position-absolute top-0 start-0 w-100 h-100 rounded-pill bg-light"
 								style={{ zIndex: -1 }}
 								transition={{ type: "spring", stiffness: 300, damping: 25 }}
 							/>
