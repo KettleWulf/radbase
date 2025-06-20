@@ -1,17 +1,19 @@
-import { Route, Routes, useLocation } from 'react-router'
-import GenrePage from './pages/GenrePage'
-import HomePage from './pages/HomePage'
-import MovieDetailsPage from './pages/MovieDetailsPage'
-import NotFoundPage from './pages/NotFoundPage'
-import ActorDetailsPage from './pages/ActorDetailsPage'
-import Navigation from './components/Navigation'
+import { Route, Routes, useLocation } from "react-router";
+import GenrePage from "./pages/GenrePage";
+import HomePage from "./pages/HomePage";
+import MovieDetailsPage from "./pages/MovieDetailsPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ActorDetailsPage from "./pages/ActorDetailsPage";
+import Navigation from "./components/Navigation";
 import "swiper/swiper-bundle.css";
-import RecentMoviesToggle from './components/RecentMovieToggle'
-import SearchPage from './pages/SearchPage'
+import RecentMoviesToggle from "./components/RecentMovieToggle";
+import SearchPage from "./pages/SearchPage";
 import { AnimatePresence } from "framer-motion";
-import Footer from './components/Footer'
-import GlobalFetchingSpinner from './components/spinners/GlobalFetchingSpinner'
-
+import Footer from "./components/Footer";
+import GlobalFetchingSpinner from "./components/spinners/GlobalFetchingSpinner";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import GlobalErrorToast from "./components/GlobalErrorToast";
 
 function App() {
 	const location = useLocation();
@@ -21,6 +23,7 @@ function App() {
 			<Navigation />
 			<GlobalFetchingSpinner />
 			<RecentMoviesToggle />
+			<GlobalErrorToast />
 
 			<main>
 				<AnimatePresence mode="wait">
@@ -34,12 +37,12 @@ function App() {
 						<Route path="*" element={<NotFoundPage />} />
 					</Routes>
 				</AnimatePresence>
-			</main>	
+			</main>
 
 			<Footer />
+			<ToastContainer position="top-center" autoClose={4000} />
 		</div>
-		
-	)
+	);
 }
 
-export default App
+export default App;

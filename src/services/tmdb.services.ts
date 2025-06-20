@@ -2,7 +2,7 @@ import api from "../lib/api"
 import { type PaginatedResponse, type Genre, type GenreResponse, type Movie, type MovieDetails, type CastResponse, type ActorDetailsWithMovies } from "./tmdb.types";
 
 export const getGenres = async (): Promise<Genre[]> => {
-	const res = await api.get<GenreResponse>("/genre/movie/list");
+	const res = await api.get<GenreResponse>("/genr/movie/list");
 	return res.data.genres
 }
 
