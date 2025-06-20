@@ -68,7 +68,6 @@ const HomePage = () => {
 						<hr className="my-4 mx-auto border w-75" />
 						<h6>Popular:</h6>
 						<MovieSwiper movies={popular.results} />
-						<hr className="my-4 mx-auto border w-75" />
 					</>
 				)}
 			</Container>

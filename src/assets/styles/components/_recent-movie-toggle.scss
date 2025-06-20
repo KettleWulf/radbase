@@ -1,11 +1,27 @@
 .recent-toggle-button {
-	top: 100%;
+	top: 0;
 	right: 3rem;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 	border-bottom-left-radius: 0.5rem;
 	border-bottom-right-radius: 0.5rem;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	
+
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	
+	[data-bs-theme="light"] & {
+		background: rgba(255, 255, 255, 0.1);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+	}
+	
+	[data-bs-theme="dark"] & {
+		background:rgba(145, 145, 145, 0.1);
+		box-shadow: 0 4px 20px rgb(255, 254, 254);
+		border: none;
+
+	}
 }
 
 .recent-toggle-width {
@@ -19,7 +35,7 @@
 .recent-toggle-dropdown {
 
 	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px); // för Safari
+	-webkit-backdrop-filter: blur(12px);
 	border: 1px solid rgba(255, 255, 255, 0.2);
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 
@@ -28,6 +44,6 @@
 	}
 
 	[data-bs-theme="dark"] & {
-	background:rgba(0, 0, 0, 0.1);
+		background:rgba(0, 0, 0, 0.1);
 	}
 }

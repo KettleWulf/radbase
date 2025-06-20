@@ -31,7 +31,7 @@ const RecentMoviesToggle = () => {
 		<div ref={toggleRef}>
 			{movies.length > 0 && <div className="position-relative">
 				<button
-					className="btn btn-sm btn-light position-absolute recent-toggle-button z-index-3"
+					className="btn btn-sm position-absolute shadow-lg recent-toggle-button z-index-3"
 					style={{
 						right: "3rem",
 					}}

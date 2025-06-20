@@ -1,20 +1,37 @@
 import { useSearchMovies } from "../hooks/useSearchMovies";
-import { Alert, Row, Spinner } from "react-bootstrap";
+import { Alert, Row } from "react-bootstrap";
 import { useSearch } from "../hooks/useSearch";
 import { usePagination } from "../hooks/usePagination";
 import MoveListCard from "../components/MoveListCard";
 import Pagination from "../components/Pagination";
 import { motion } from "framer-motion";
+import { BeatLoader } from "react-spinners";
+import { useSwipeable } from "react-swipeable";
 
 const SearchPage = () => {
 	const { page, handlePageChange } = usePagination();
 	const { query } = useSearch();
-	const { data, isLoading, isError } = useSearchMovies(query, page);
+	const { data, isLoading, isError, error } = useSearchMovies(query, page);
+
+	const swipeHandlers = useSwipeable({
+		onSwipedLeft: () => {
+			if (data && page < data.total_pages) handlePageChange(page + 1);
+		},
+		onSwipedRight: () => {
+			if (page > 1) handlePageChange(page - 1);
+		},
+		trackTouch: true,
+		preventScrollOnSwipe: true,
+	});
 
 	if (isLoading) {
 		return (
 			<div className="d-flex justify-content-center mt-5">
-				<Spinner animation="border" variant="primary" />
+				<BeatLoader
+				color="#534bb3"
+				loading={isLoading}
+				speedMultiplier={1}
+			/>
 			</div>
 		);
 	}
@@ -22,7 +39,7 @@ const SearchPage = () => {
 	if (isError || !data) {
 		return (
 			<Alert variant="danger" className="mt-5 text-center">
-				Något gick fel vid hämtning av filmer.
+				{error ? error.message : "Uknown error"}
 			</Alert>
 		);
 	}
@@ -34,16 +51,21 @@ const SearchPage = () => {
 			</Alert>
 		);
 	}
+
 	return (
 		<motion.div
 			key={page}
+			drag="x"
+			dragElastic={0.2}
+			dragConstraints={{ left: 0, right: 0 }}
+			whileDrag={{ scale: 0.98, opacity: 0.95 }}
+			{...swipeHandlers}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.6 }}
 		>
 			<div className="container mt-4">
 				<title>{`RADb | ${query}`}</title>
-				{/* <h1 className="visually-hidden">Search Page</h1> */}
 				<h2 className="mb-4 text-capitalize">Search</h2>
 
 				<small className="text-muted ms-1 mb-2">

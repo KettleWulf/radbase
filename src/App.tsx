@@ -10,6 +10,8 @@ import RecentMoviesToggle from './components/RecentMovieToggle'
 import SearchPage from './pages/SearchPage'
 import { AnimatePresence } from "framer-motion";
 import Footer from './components/Footer'
+import GlobalFetchingSpinner from './components/spinners/GlobalFetchingSpinner'
+
 
 function App() {
 	const location = useLocation();
@@ -17,18 +19,23 @@ function App() {
 	return (
 		<div id="app">
 			<Navigation />
+			<GlobalFetchingSpinner />
 			<RecentMoviesToggle />
-			<AnimatePresence mode="wait">
-				<Routes location={location} key={location.pathname}>
-					<Route path="/" element={<HomePage />} />
-					<Route path="/genre/:id" element={<GenrePage />} />
-					<Route path="/movie/:id" element={<MovieDetailsPage />} />
-					<Route path="/actor/:id" element={<ActorDetailsPage />} />
-					<Route path="/search" element={<SearchPage />} />
 
-					<Route path="*" element={<NotFoundPage />} />
-				</Routes>
-			</AnimatePresence>
+			<main>
+				<AnimatePresence mode="wait">
+					<Routes location={location} key={location.pathname}>
+						<Route path="/" element={<HomePage />} />
+						<Route path="/genre/:id" element={<GenrePage />} />
+						<Route path="/movie/:id" element={<MovieDetailsPage />} />
+						<Route path="/actor/:id" element={<ActorDetailsPage />} />
+						<Route path="/search" element={<SearchPage />} />
+
+						<Route path="*" element={<NotFoundPage />} />
+					</Routes>
+				</AnimatePresence>
+			</main>	
+
 			<Footer />
 		</div>
 		

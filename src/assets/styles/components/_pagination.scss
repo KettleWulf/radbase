@@ -35,4 +35,8 @@
 	&.paginator-right {
 		right: -15rem;
 	}
+
+	@media (max-width: 768px) {
+		display: none !important;
+	}
 }

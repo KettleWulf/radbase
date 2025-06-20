@@ -1,11 +1,27 @@
 .navigation {
 background: #020024;
-background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(15, 15, 77, 1) 86%, rgba(47, 37, 161, 1) 100%);
+background: linear-gradient(35deg,rgba(2, 0, 36, 1) 0%, rgba(21, 21, 110, 1) 95%, rgba(26, 19, 125, 1) 100%);
 
-	color: white;
+	color: rgba(255, 255, 255, 0.623);
 	* {
 		color: inherit;
 	}
+}
+
+.navbar {
+	.nav-link,
+	.dropdown-toggle {
+		&.active,
+		&:hover,
+		&:focus {
+			color: #ffffff !important;
+		}
+	}
+}
+
+.dropdown-item.active {
+	background-color: #d8d8d8da;
+	color: white;
 }
 
 .logo-nav {

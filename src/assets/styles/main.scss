@@ -8,6 +8,18 @@
 @use "components/recent-movie-toggle";
 @use "components/footer";
 
+#App {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1;
+	min-height: 65vh;
+}
+
+
 .z-index-1 {
 	z-index: 1;
 }
@@ -48,4 +60,13 @@
 		border: 1px solid rgba(255, 255, 255, 0.1);
 		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 	}
+}
+
+#global-spinner {
+	position: absolute;
+	top: 60px;
+	left: 50%;
+	width: 100%;
+	transform: translateX(-50%);
+	z-index: 1001;
 }
