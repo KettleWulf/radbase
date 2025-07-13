@@ -12,8 +12,8 @@ const GlobalFetchingSpinner = () => {
 				color="#602578"
 				loading={!!isFetching}
 				width={"100%"}
-				height={6}
-				speedMultiplier={2}
+				height={2}
+				speedMultiplier={3}
 			/>
 		</div>
 	)

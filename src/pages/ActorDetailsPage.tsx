@@ -1,9 +1,10 @@
 import { useParams } from "react-router";
-import { Spinner, Alert, Badge } from "react-bootstrap";
+import { Alert, Badge } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { useActorWithMovies } from "../hooks/useActorWithCredits";
 import MovieSwiper from "../components/MovieSwiper/MovieSwiper";
 import { convertToSwiperData } from "../components/MovieSwiper/convertToSwiperData";
+import LoadingSpinner from "../components/spinners/LoadingSpinner";
 
 const ActorDetailsPage = () => {
 	const { id } = useParams();
@@ -17,13 +18,7 @@ const ActorDetailsPage = () => {
 		return sentences.slice(0, maxSentences).join(" ");
 	}
 
-	if (isLoading) {
-		return (
-			<div className="d-flex justify-content-center mt-5">
-				<Spinner animation="border" variant="primary" />
-			</div>
-		);
-	}
+	if (isLoading) return <LoadingSpinner isLoading />
 
 	if (isError || !actor) {
 		return (

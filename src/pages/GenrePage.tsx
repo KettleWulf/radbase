@@ -6,8 +6,8 @@ import MoveListCard from "../components/MoveListCard";
 import { motion } from "framer-motion";
 import { usePagination } from "../hooks/usePagination";
 import Pagination from "../components/Pagination";
-import { BeatLoader } from "react-spinners";
 import { useSwipeable } from "react-swipeable";
+import LoadingSpinner from "../components/spinners/LoadingSpinner";
 
 const GenrePage = () => {
 	const { id } = useParams();
@@ -35,13 +35,7 @@ const GenrePage = () => {
 		preventScrollOnSwipe: true,
 	});
 
-	if (isLoading) {
-		return (
-			<div className="d-flex justify-content-center mt-5">
-				<BeatLoader color="#534bb3" loading={isLoading} speedMultiplier={1} />
-			</div>
-		);
-	}
+	if (isLoading) return <LoadingSpinner isLoading/>
 
 	if (isError || !data) {
 		return (

@@ -1,13 +1,14 @@
 import { useNavigate, useParams } from "react-router";
 import { useMovie } from "../hooks/useMovie";
 import { useCredits } from "../hooks/useCredits";
-import { Spinner, Alert, Badge } from "react-bootstrap";
+import { Alert, Badge } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper/modules";
 import { useEffect } from "react";
 import { useRecommendedMovies } from "../hooks/useRecommendedMovies";
 import MovieSwiper from "../components/MovieSwiper/MovieSwiper";
+import LoadingSpinner from "../components/spinners/LoadingSpinner";
 
 const MovieDetailsPage = () => {
 	const { id } = useParams();
@@ -26,13 +27,7 @@ const MovieDetailsPage = () => {
 		}
 	}, [movie]);
 
-	if (isLoading) {
-		return (
-			<div className="d-flex justify-content-center mt-5">
-				<Spinner animation="border" variant="primary" />
-			</div>
-		);
-	}
+	if (isLoading) return <LoadingSpinner isLoading />
 
 	if (isError || !movie) {
 		return (
