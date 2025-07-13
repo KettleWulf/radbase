@@ -87,7 +87,7 @@ const MovieDetailsPage = () => {
 							</div>
 						)}
 						<div className="rating-badge" title={`# votes ${movie.vote_count}`}>
-							{movie.vote_average.toFixed(1)}
+							{movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}
 						</div>
 						<p className="mt-3">{movie.overview || "Description not yet available."}</p>
 					</div>

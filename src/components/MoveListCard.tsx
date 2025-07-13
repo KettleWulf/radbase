@@ -37,7 +37,7 @@ const MoveListCard: React.FC<MoveListCardProps> = ({ movie }) => {
 				</Card>
 
 				<div className="rating-badge" title={`# votes ${movie.vote_count}`}>
-					{movie.vote_average.toFixed(1)}
+					{movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}
 				</div>
 			</div>
 		</Col>

@@ -1,6 +1,10 @@
 .navigation {
-background: #020024;
-background: linear-gradient(35deg,rgba(2, 0, 36, 1) 0%, rgba(21, 21, 110, 1) 95%, rgba(26, 19, 125, 1) 100%);
+	background: #020024;
+	background: linear-gradient(35deg,rgba(2, 0, 36, 0.849) 0%, rgba(21, 21, 110, 0.849) 95%, rgba(26, 19, 125, 0.747) 100%);
+
+	// background: #aa4b6b;
+	// background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
+	// background: linear-gradient(to right, #3d3791, #6b6b83, #6b6b83, #6b6b83, #6b6b83, #6b6b83,#6b6b83, #aa4b6b); /* 
 
 	color: rgba(255, 255, 255, 0.623);
 	* {
