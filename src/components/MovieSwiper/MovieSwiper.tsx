@@ -37,7 +37,7 @@ const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies, isSmall, isBig }) => 
 							<img
 								src={
 									movie.poster_path
-										? `https://image.tmdb.org/t/p/w185${movie.poster_path}`
+										? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
 										: "/images/placeholder-big.png"
 								}
 								alt={movie.title}
