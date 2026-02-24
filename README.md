@@ -1,54 +1,86 @@
-# React + TypeScript + Vite
+# RADb - Reel Archive Data Base
+<img width="1200" height="576" alt="image" src="https://github.com/user-attachments/assets/5aa73957-2ece-4a98-b962-82072b305617" />
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+RADb is a movie discovery web app powered by [TMDB](https://www.themoviedb.org/). It lets users browse trending and categorized movies, explore genres, view detailed movie and actor pages, and search through paginated results.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Browse `Trending` movies with day/week toggle
+- Explore `Now Playing`, `Top Rated`, and `Popular` sections
+- Genre-based movie browsing
+- Movie details page with cast and recommendations
+- Actor details page with film credits
+- Search movies with pagination and swipe navigation
+- Recent visited movies quick-access toggle
+- Global loading and error feedback (spinners + toast)
+- Animated page transitions (Framer Motion)
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19
+- TypeScript
+- Vite
+- React Router
+- TanStack Query (data fetching + caching)
+- Axios (TMDB API client)
+- React Bootstrap + Bootstrap
+- Sass (SCSS)
+- Swiper
+- Framer Motion
+- React Toastify
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Project Structure
+
+- `src/pages` - Route-level pages (`HomePage`, `GenrePage`, `MovieDetailsPage`, `ActorDetailsPage`, `SearchPage`)
+- `src/components` - Reusable UI components (navigation, sliders, cards, toggles, pagination, etc.)
+- `src/hooks` - Data/UI hooks for TMDB queries and page state
+- `src/services` - TMDB service layer and types
+- `src/lib/api.ts` - Axios instance and auth headers
+- `src/contexts` - Theme + genre context providers
+- `src/assets/styles` - Global/component SCSS styles
+
+## Environment Variables
+
+Create a `.env` file in the project root with:
+
+```bash
+VITE_TMDB_BASE_URL=https://api.themoviedb.org/3
+VITE_TMDB_BEARER_TOKEN=your_tmdb_v4_bearer_token
+VITE_TMDB_API_KEY=your_tmdb_api_key
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Notes:
+- `VITE_` prefix is required for Vite client-side env access.
+- `VITE_TMDB_BEARER_TOKEN` is used by `src/lib/api.ts` for authenticated requests.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
+npm run dev
 ```
+
+Open the local Vite URL shown in the terminal (usually `http://localhost:5173`).
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Type-check and build production assets
+- `npm run preview` - Preview production build locally
+- `npm run check:0-lint` - Run ESLint
+- `npm run check:1-tsc` - Run TypeScript checks (`--noEmit`)
+- `npm run check:2-type-coverage` - Enforce 100% type coverage
+- `npm run check` - Run all checks in sequence
+
+## Deployment
+
+Netlify configuration is included in `netlify.toml`:
+
+- Build command: `tsc && vite build`
+- Publish directory: `dist`
+- SPA redirect rule to `index.html`
+
+## Data Source
+
+This project uses [The Movie Database (TMDB) API](https://developer.themoviedb.org/docs/getting-started).
+
