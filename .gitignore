@@ -25,3 +25,8 @@ dist-ssr
 
 ## Netlify
 .netlify/
+
+## Git
+.env
+.env.*
+!.env.example

@@ -32,9 +32,6 @@ const RecentMoviesToggle = () => {
 			{movies.length > 0 && <div className="position-relative">
 				<button
 					className="btn btn-sm position-absolute shadow-lg recent-toggle-button z-index-3"
-					style={{
-						right: "3rem",
-					}}
 					onClick={() => setIsOpen(!isOpen)}
 				>
 					Last Visited <span>{isOpen ? "▲" : "▼"}</span>
@@ -42,7 +39,7 @@ const RecentMoviesToggle = () => {
 
 				{isOpen && (
 					<div
-						className="border-top position-absolute top-100 end-0 shadow fade-in rounded z-index-2 w-50 recent-toggle-dropdown"
+						className="position-absolute top-100 end-0 shadow fade-in rounded z-index-2 recent-toggle-dropdown recent-toggle-width"
 					>
 						{isLoading && <p className="text-muted px-3">Loading...</p>}
 						{isError && <p className="text-danger px-3">Something went wrong.</p>}

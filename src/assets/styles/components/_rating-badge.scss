@@ -1,7 +1,7 @@
 .rating-badge {
 	position: absolute;
 	top: 3%;
-	left: 97%;
+	left: 93%;
 	transform: translate(-50%, -50%);
 	background: #aa4b6b;
 	background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
@@ -9,14 +9,21 @@
 
 	color: white;
 	border-radius: 50%;
-	width: 48px;
-	height: 48px;
+	width: 40px;
+	height: 40px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-weight: bold;
 	font-size: 0.9rem;
 	cursor: default;
+
+	@media (min-width: 700px) {
+		top: 3%;
+		left: 97%;
+		width: 48px;
+		height: 48px;
+	}
 }
 .rating-badge-wrapper {
 	position: relative;

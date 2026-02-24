@@ -64,13 +64,13 @@ const MovieDetailsPage = () => {
 						<h2>{movie.title}</h2>
 						{movie.tagline && <p className="text-muted fst-italic">"{movie.tagline}"</p>}
 						<div className="mb-2">
-							<Badge bg="secondary" className="me-2">
+							<Badge bg="dark" className="me-2">
 								⭐ {movie.vote_average.toFixed(1)}
 							</Badge>
-							<Badge bg="info" className="me-2">
+							<Badge bg="secondary" className="me-2">
 								{movie.runtime} min
 							</Badge>
-							<Badge bg="dark">{movie.release_date}</Badge>
+							<Badge bg="secondary">{movie.release_date}</Badge>
 						</div>
 						{movie.genres && (
 							<div className="mb-2">
@@ -81,9 +81,9 @@ const MovieDetailsPage = () => {
 								))}
 							</div>
 						)}
-						<div className="rating-badge" title={`# votes ${movie.vote_count}`}>
+						{/* <div className="rating-badge" title={`# votes ${movie.vote_count}`}>
 							{movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}
-						</div>
+						</div> */}
 						<p className="mt-3">{movie.overview || "Description not yet available."}</p>
 					</div>
 
