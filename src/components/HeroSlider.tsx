@@ -13,9 +13,11 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ movies }) => {
 			<Swiper
 				modules={[Autoplay, EffectFade]}
 				effect="fade"
+				speed={2000}
 				loop
 				autoplay={{ delay: 5000, disableOnInteraction: false }}
 				slidesPerView={1}
+				freeMode={false}
 				className="hero-swiper"
 			>
 				{movies.map((movie) => (
@@ -26,12 +28,14 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ movies }) => {
 								backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
 							}}
 						>
-							<div className="hero-overlay">
-								<img
-									src="/images/RADb-logo.png"
-									alt="RADb logo"
-									className="hero-logo"
-								/>
+							<div className="hero-fade">
+								<div className="hero-overlay">
+									<img
+										src="/images/RADb-logo.png"
+										alt="RADb logo"
+										className="hero-logo"
+									/>
+								</div>
 							</div>
 						</div>
 					</SwiperSlide>

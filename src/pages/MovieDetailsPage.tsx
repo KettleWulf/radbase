@@ -4,7 +4,7 @@ import { useCredits } from "../hooks/useCredits";
 import { Alert, Badge } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { useEffect } from "react";
 import { useRecommendedMovies } from "../hooks/useRecommendedMovies";
 import MovieSwiper from "../components/MovieSwiper/MovieSwiper";
@@ -95,9 +95,9 @@ const MovieDetailsPage = () => {
 									<Swiper
 										slidesPerView="auto"
 										spaceBetween={10}
-										freeMode={true}
+										freeMode={false}
 										navigation={true}
-										modules={[FreeMode, Navigation]}
+										modules={[Navigation]}
 										className="mySwiper py-2"
 									>
 										{credits.cast.slice(0, 20).map((actor) => (

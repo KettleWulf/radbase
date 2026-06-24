@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { useNavigate } from "react-router";
 import { sortMoviesByPopularity } from "../../utils/sortMoviesByPopularity";
 import type { MovieSwiperData } from "./MovieSwiper.types";
@@ -19,9 +19,9 @@ const MovieSwiper: React.FC<MovieSwiperProps> = ({ movies, isSmall, isBig }) => 
 			<Swiper
 				slidesPerView="auto"
 				spaceBetween={10}
-				freeMode={true}
+				freeMode={{sticky: true}}
 				navigation={true}
-				modules={[FreeMode, Navigation]}
+				modules={[Navigation]}
 				className="mySwiper py-2"
 			>
 				{sortMoviesByPopularity(movies).map((movie) => (
