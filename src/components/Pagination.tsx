@@ -12,31 +12,39 @@ const Pagination: React.FC<PaginationProps> = ({ page, totalPages, onPageChange 
 	return (
 	<AnimatePresence>
 		{page > 1 && (
-		<motion.button
+		<motion.div
 			key="prev"
-			className="floating-paginator paginator-left btn btn-light"
-			onClick={() => onPageChange(page - 1)}
+			className="paginator-rail paginator-left"
 			initial={{ opacity: 0, x: -20 }}
 			animate={{ opacity: 1, x: 0 }}
 			exit={{ opacity: 0, x: -20 }}
 			transition={{ duration: 0.25 }}
 		>
-			<AiOutlineLeft />
-		</motion.button>
+			<button
+				className="floating-paginator btn btn-light"
+				onClick={() => onPageChange(page - 1)}
+			>
+				<AiOutlineLeft />
+			</button>
+		</motion.div>
 		)}
 
 		{page < totalPages && (
-		<motion.button
+		<motion.div
 			key="next"
-			className="floating-paginator paginator-right btn btn-light"
-			onClick={() => onPageChange(page + 1)}
+			className="paginator-rail paginator-right"
 			initial={{ opacity: 0, x: 20 }}
 			animate={{ opacity: 1, x: 0 }}
 			exit={{ opacity: 0, x: 20 }}
 			transition={{ duration: 0.25 }}
 		>
-			<AiOutlineRight />
-		</motion.button>
+			<button
+				className="floating-paginator btn btn-light"
+				onClick={() => onPageChange(page + 1)}
+			>
+				<AiOutlineRight />
+			</button>
+		</motion.div>
 		)}
 	</AnimatePresence>
 	);

@@ -74,7 +74,7 @@ export const getMoviesByCategory = async (category: Category) => {
 
 export type Timeframe = "day" | "week";
 
-export const getTrendingMovies = async (timeframe: Timeframe) => {
+export const  getTrendingMovies = async (timeframe: Timeframe) => {
 	const res = await api.get<PaginatedResponse<Movie>>("trending/movie/" + timeframe, {
 		params: {
 			include_adult: false,
